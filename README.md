@@ -1,41 +1,70 @@
 # Sped2db
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sped2db`. To experiment with that code, run `bin/console` for an interactive prompt.
+Importa registros de arquivos no formato [SPED](http://sped.rfb.gov.br) fiscal/contribuições e salva em um Banco de Dados
 
-TODO: Delete this and the text above, and describe your gem
+## Instalação
 
-## Installation
+O sped2db usa o [Sequel](https://github.com/jeremyevans/sequel) para acesso ao banco de dados. Para tanto, é necessário instalar também o driver ruby adequado. 
 
-Add this line to your application's Gemfile:
 
-```ruby
-gem 'sped2db'
+```
+$ gem install sped2db
+$ gem install <driver do seu BD>
 ```
 
-And then execute:
+Sendo que driver pode ser `sqlite3`, `pg`, `mysql2`, etc.
 
-    $ bundle
+## Uso
 
-Or install it yourself as:
+```
+$ sped2db [opções] <caminho sped>
+Opções:
+    -c, --config             Arquivo de configuração ou URI de conexão (default: ./sped2db.yml)
+    -n, --dbname             Nome do BD (sobrescreve config)
+    -u, --user               Nome do usuário do BD (sobrescreve config)
+    -p, --passwd             Senha do usuário (sobrescreve config)
+    -e, --continue-on-error  Continua se encontrar erro (default: false)
+    -v, --version
+    -h, --help
+```
 
-    $ gem install sped2db
+O caminho SPED pode ser um único arquivo ou um diretório contendo arquivos SPED.
 
-## Usage
+## Exemplos
 
-TODO: Write usage instructions here
+1. Usa configurações de conexão do `sped2db.yml` (se existir) no diretório atual e carrega arquivo `~/sped.txt` no BD teste:
+```
+$ sped2db -n teste ~/sped.txt
+```
 
-## Development
+2. Usa configurações de conexão contidas em `~/database.yml` com usuário john, senha 123 e carrega arquivo `~/sped.txt`:
+```
+$ sped2db -c ~/database.yml -u john -p 123 ~/sped.txt
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec sped2db` to use the gem in this directory, ignoring other installed copies of this gem.
+3. Usa URI de conexão e carrega todos os arquivos SPED do diretório `~/sped-files/`, mesmo se algum tiver erros:
+```
+$ sped2db -c postgres://localhost/teste -e ~/sped-files/
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Um arquivo de configuração tem o seguinte formato:
+```yaml
+adapter: postgres
+host: localhost
+port: 5432
+user: myUser
+password: myPassword
+database: sped
+```
+Para mais detalhes sobre configuração e strings de conexão, consulte a [documentação](https://github.com/jeremyevans/sequel/blob/master/doc/opening_databases.rdoc) do Sequel.
 
-## Contributing
+## Desenvolvimento
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sped2db. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Depois de clonar o repo, execute `bundle install` para instalar as dependências, então execute `rake spec` para rodar os testes. Execute `bundle exec sped2db` para usar a gem neste diretório, ignorando outras cópias desta gem instaladas.
 
+Para instalar esta gem na sua máquina local, execute `bundle exec rake install`. Para fazer o release de uma nova versão, atualize o número de versão em `version.rb` e então execute `bundle exec rake release`, que criará uma tag git para a versão, fará push no git dos commits e tags e mandará o `.gem` para [rubygems.org](https://rubygems.org).
 
-## License
+## Licença
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+Esta gem está disponível como open source sob os termos da [MIT License](http://opensource.org/licenses/MIT).
 

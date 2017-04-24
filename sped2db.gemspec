@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['elvis.gs@gmail.com']
 
   spec.summary       = 'Importa registros SPED para um BD'
-  spec.description   = 'Importa registros de arquivos no formato SPED e salva em um Banco de Dados'
+  spec.description   = 'Importa registros de arquivos no formato SPED e para um Banco de Dados'
   spec.homepage      = 'https://github.com/elvisgs/sped2db'
   spec.license       = 'MIT'
 
