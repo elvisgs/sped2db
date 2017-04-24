@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Sped2DB
   describe DbTools do
-    db_name = File.expand_path('tmp/testdb.sqlite3')
+    db_name = File.expand_path('testdb.sqlite3')
     let(:db_file) { Sequel.sqlite(db_name) }
     let(:db_memory) { Sequel.sqlite(':memory:') }
 
