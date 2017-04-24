@@ -1,0 +1,36 @@
+Lint/HandleExceptions:
+  Exclude:
+    - 'spec/**/*'
+
+Lint/UnifiedInteger:
+  Exclude:
+    - 'migrations/**/*'
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/ClassLength:
+  Exclude:
+    - 'lib/**/cli.rb'
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'migrations/**/*'
+    - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - 'sped2db.gemspec'
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false

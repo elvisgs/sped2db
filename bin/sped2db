@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'sped2db'
+
+Sped2DB::CLI.new.run ARGV
