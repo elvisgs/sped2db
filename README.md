@@ -1,6 +1,8 @@
 # Sped2db
 
-Importa registros de arquivos no formato [SPED](http://sped.rfb.gov.br) fiscal/contribuições e salva em um Banco de Dados
+[![Gem Version](https://badge.fury.io/rb/sped2db.svg)](https://badge.fury.io/rb/sped2db) [![Build Status](https://travis-ci.org/elvisgs/sped2db.svg?branch=master)](https://travis-ci.org/elvisgs/sped2db)
+
+Importa registros de arquivos no formato [SPED](http://sped.rfb.gov.br) fiscal/contribuições para um Banco de Dados
 
 ## Instalação
 
