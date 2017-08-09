@@ -72,9 +72,9 @@ module Sped2DB
       cnpj = @cnpj_pai
       name = reg.nome
 
-      if @layout == :fiscal && name == '0000'
+      if @layout.type == :fiscal && name == '0000'
         cnpj = reg[:cnpj]
-      elsif @layout == :contrib
+      elsif @layout.type == :contrib
         cnpj = reg[:cnpj] if name.end_with?('010') || name == '0140'
       end
 
