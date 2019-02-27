@@ -33,7 +33,7 @@ module Sped2DB
     private
 
     def dividir_linha_em_valores(linha)
-      linha.sub(/^\|/, '').sub(/\|$/, '').gsub('\\', '\\\\\\\\').split('|', -1)
+      linha.chomp.sub(/^\|/, '').sub(/\|$/, '').gsub('\\', '\\\\\\\\').split('|', -1)
     end
 
     def corrigir_caracteres_especiais

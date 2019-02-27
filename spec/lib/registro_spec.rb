@@ -32,5 +32,23 @@ module Sped2DB
       expect(reg[:descr_item]).to eq 'PREGO'
       expect(reg[:aliq_icms]).to eq '10'
     end
+
+    it 'deve desconsiderar \n no final da linha' do
+      line = "|0200|1|PREGO|a|a|KG|00|1|aaa|24|1111|10||\n"
+      metadata = YAML.load_file 'meta/metadata-fiscal-v011.yml'
+
+      reg = Registro.new line, metadata
+
+      expect(reg.valores.length).to eq 12 # o primeiro campo não conta, é identificador
+    end
+
+    it 'deve desconsiderar \r\n no final da linha' do
+      line = "|0200|1|PREGO|a|a|KG|00|1|aaa|24|1111|10||\r\n"
+      metadata = YAML.load_file 'meta/metadata-fiscal-v011.yml'
+
+      reg = Registro.new line, metadata
+
+      expect(reg.valores.length).to eq 12 # o primeiro campo não conta, é identificador
+    end
   end
 end
