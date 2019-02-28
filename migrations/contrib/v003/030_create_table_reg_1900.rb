@@ -1,8 +1,8 @@
 Sequel.migration do
   change do
     create_table :reg_1900 do
-      column :id, Integer, primary_key: true
-      column :id_pai, Integer, index: true, null: false
+      column :id, :Bignum, primary_key: true
+      column :id_pai, :Bignum, index: true, null: false
       column :cnpj, String, size: 14
       column :cod_mod, String, size: 2
       column :ser, String, size: 4
@@ -14,7 +14,7 @@ Sequel.migration do
       column :cst_cofins, String, size: 2
       column :cfop, String, size: 4
       column :info_compl, String
-      column :cod_cta, String, size: 60
+      column :cod_cta, String, size: 255
       column :cnpj_pai, String, size: 14, index: true
     end
   end

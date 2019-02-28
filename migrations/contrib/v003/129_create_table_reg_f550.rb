@@ -1,8 +1,8 @@
 Sequel.migration do
   change do
     create_table :reg_f550 do
-      column :id, Integer, primary_key: true
-      column :id_pai, Integer, index: true, null: false
+      column :id, :Bignum, primary_key: true
+      column :id_pai, :Bignum, index: true, null: false
       column :vl_rec_comp, BigDecimal, size: [18, 2]
       column :cst_pis, String, size: 2
       column :vl_desc_pis, BigDecimal, size: [18, 2]
@@ -16,7 +16,7 @@ Sequel.migration do
       column :vl_cofins, BigDecimal, size: [18, 2]
       column :cod_mod, String, size: 2
       column :cfop, String, size: 4
-      column :cod_cta, String, size: 60
+      column :cod_cta, String, size: 255
       column :info_compl, String
       column :cnpj_pai, String, size: 14, index: true
     end

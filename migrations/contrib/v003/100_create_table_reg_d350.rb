@@ -1,11 +1,11 @@
 Sequel.migration do
   change do
     create_table :reg_d350 do
-      column :id, Integer, primary_key: true
-      column :id_pai, Integer, index: true, null: false
+      column :id, :Bignum, primary_key: true
+      column :id_pai, :Bignum, index: true, null: false
       column :cod_mod, String, size: 2
       column :ecf_mod, String, size: 20
-      column :ecf_fab, String, size: 20
+      column :ecf_fab, String, size: 21
       column :dt_doc, Date
       column :cro, String, size: 3
       column :crz, String, size: 6
@@ -24,7 +24,7 @@ Sequel.migration do
       column :quant_bc_cofins, BigDecimal, size: [18, 3]
       column :aliq_cofins_quant, BigDecimal, size: [18, 4]
       column :vl_cofins, BigDecimal, size: [18, 2]
-      column :cod_cta, String, size: 60
+      column :cod_cta, String, size: 255
       column :cnpj_pai, String, size: 14, index: true
     end
   end
