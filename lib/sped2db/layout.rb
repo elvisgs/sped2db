@@ -2,7 +2,7 @@ module Sped2DB
   class Layout
     VERSIONS = {
       fiscal: %w[009 010 011],
-      contrib: %w[002 003]
+      contrib: %w[002 003 004 005]
     }.freeze
 
     attr_reader :type, :version

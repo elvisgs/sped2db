@@ -54,6 +54,20 @@ module Sped2DB
 
         expect { db_tools.create_tables }.not_to raise_exception
       end
+
+      it 'executa migrations do layout contrib versao 004' do
+        layout = Layout.new :contrib, '004'
+        db_tools = DbTools.new db_memory, layout
+
+        expect { db_tools.create_tables }.not_to raise_exception
+      end
+
+      it 'executa migrations do layout contrib versao 005' do
+        layout = Layout.new :contrib, '005'
+        db_tools = DbTools.new db_memory, layout
+
+        expect { db_tools.create_tables }.not_to raise_exception
+      end
     end
   end
 end
